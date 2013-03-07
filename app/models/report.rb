@@ -11,9 +11,9 @@ class Report < ActiveRecord::Base
   end
 
   def assign_to_user
-    if !self.email.empty?
+    if !self.email.nil? && !self.email.empty?
       user = User.find_by_email(self.email)
-    elsif !self.phone.empty?
+    elsif !self.phone.nil? && !self.phone.empty?
       user = User.find_by_phone(self.phone)
     else
       nil
