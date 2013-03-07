@@ -1,6 +1,6 @@
 <h3>River Reports</h3>
 <% @reports.each do |report| %>
-  <p>Time: <%= report.created_at %></p>
+  <p>Time: <%= time_tag report.created_at %></p>
   <p>Report: <%= report.report %></p>
   <p>From: <%= report.source %></p>
 <% end %>
