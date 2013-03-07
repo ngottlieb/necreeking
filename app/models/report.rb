@@ -1,5 +1,5 @@
 class Report < ActiveRecord::Base
-  after_create :assign_to_user
+  after_save :assign_to_user
   
   attr_accessible :email, :phone, :report, :user_id
   belongs_to :user
@@ -9,6 +9,8 @@ class Report < ActiveRecord::Base
   def source
     self.email || self.phone
   end
+
+  private
 
   def assign_to_user
     if !self.email.nil? && !self.email.empty?

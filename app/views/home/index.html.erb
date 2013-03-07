@@ -3,6 +3,6 @@
   <p>Time: <%= time_tag report.created_at %></p>
   <p>Report: <%= report.report %></p>
   <% if report.user %>
-  	<p>From: <%= report.user %></p>
+  	<p>From: <%= report.user.name %></p>
   <% end %>
 <% end %>
