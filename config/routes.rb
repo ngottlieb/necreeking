@@ -1,4 +1,10 @@
 Necreeking::Application.routes.draw do
+  get "reports/index"
+
+  get "reports/new"
+
+  get "reports/create"
+
   authenticated :user do
     root :to => 'home#index'
   end
