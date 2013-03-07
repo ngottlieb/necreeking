@@ -1,2 +1,6 @@
-<h1>Reports#index</h1>
-<p>Find me in app/views/reports/index.html.erb</p>
+<h3>River Reports</h3>
+<% @reports.each do |report| %>
+  <p>Time: <%= report.created_at %></p>
+  <p>Report: <%= report.report %></p>
+  <p>From: <%= report.source %></p>
+<% end %>
