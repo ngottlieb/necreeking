@@ -1,5 +1,5 @@
 class Report < ActiveRecord::Base
-  after_save :assign_to_user
+  before_save :assign_to_user
   
   attr_accessible :email, :phone, :report, :user_id
   belongs_to :user
