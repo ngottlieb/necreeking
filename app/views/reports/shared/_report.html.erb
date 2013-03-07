@@ -1,0 +1,10 @@
+<div class="report well">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<span class="label label-info">
+		<%= time_tag report.created_at %>
+	</span>
+    <% if report.user %>
+    	<span class="label label-default">From: <%= report.user.name %></span>
+    <% end %>
+	<p><%= report.report %></p>
+</div>

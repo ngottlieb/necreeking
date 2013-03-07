@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Necreeking" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Necreeking" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "NECreeking" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "NECreeking" %>">
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
@@ -21,10 +21,16 @@
       <div class="container">
         <div class="content">
            <div class="row">
-            <div class="span12">
+            <div class="span9">
               <%= render 'layouts/messages' %>
               <%= yield %>
             </div>
+			<div class="span3">
+				<h3>Live River Updates</h3>
+				<% sidebar_reports.each do |report| %>
+				  <%= render :partial => "reports/shared/report", :locals => { :report => report } %>
+				<% end %>
+			</div>
           </div>
           <footer>
           </footer>

@@ -12,4 +12,8 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def sidebar_reports
+    Report.limit(10)
+  end
+
 end
