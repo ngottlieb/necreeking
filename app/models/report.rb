@@ -1,7 +1,7 @@
 class Report < ActiveRecord::Base
   after_save :assign_to_user
   
-  attr_accessible :email, :phone, :report, :user_id
+  attr_accessible :email, :phone, :report, :user
   belongs_to :user
   
   default_scope order("created_at DESC")
