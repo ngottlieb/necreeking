@@ -1,7 +1,7 @@
 class Report < ActiveRecord::Base
   after_save :assign_to_user
   
-  attr_accessible :email, :phone, :report, :user
+  attr_accessible :email, :phone, :report, :user_id
   belongs_to :user
   
   default_scope order("created_at DESC")
@@ -9,8 +9,6 @@ class Report < ActiveRecord::Base
   def source
     self.email || self.phone
   end
-
-  private
 
   def assign_to_user
     if !self.email.nil? && !self.email.empty?

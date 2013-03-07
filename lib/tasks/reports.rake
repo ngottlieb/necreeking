@@ -4,7 +4,7 @@ namespace :reports do
   task :back_match_reports => :environment do
     puts "Updating reports..."
     Report.find_each do |report|
-      report.save
+      report.assign_to_user
     end
   end
 
