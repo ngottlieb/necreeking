@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :phone
   has_many :reports
   
+  validates_uniqueness_of :email, :phone
+  
 end

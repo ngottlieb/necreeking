@@ -7,7 +7,8 @@ class ReportsController < ApplicationController
   end
 
   def create
-    @report = Report.new(:report => params[:Body], :phone => params[:From])
+    phone = "(" + params[:From][2..4] + ")" + " " + params[:From][5..7] + "-" + params[:From][8..11]
+    @report = Report.new(:report => params[:Body], :phone => phone)
     if @report.save
       redirect_to root_path, notice: "Report created"
     else

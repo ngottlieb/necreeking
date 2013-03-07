@@ -1,4 +1,6 @@
 class Report < ActiveRecord::Base
+  after_create :assign_to_user
+  
   attr_accessible :email, :phone, :report, :user_id
   belongs_to :user
   
@@ -7,6 +9,21 @@ class Report < ActiveRecord::Base
   def source
     self.email || self.phone
   end
+
+  def assign_to_user
+    if !self.email.empty?
+      user = User.find_by_email(self.email)
+    elsif !self.phone.empty?
+      user = User.find_by_phone(self.phone)
+    else
+      nil
+    end
+    if user
+      self.user = user
+    end
+  end
+      
+    
   
   
 end
