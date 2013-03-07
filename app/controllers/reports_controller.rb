@@ -6,7 +6,7 @@ class ReportsController < ApplicationController
     @report = Report.new
   end
 
-  def create
+  def twilio_create
     phone = "(" + params[:From][2..4] + ")" + " " + params[:From][5..7] + "-" + params[:From][8..11]
     @report = Report.new(:report => params[:Body], :phone => phone)
     if @report.save

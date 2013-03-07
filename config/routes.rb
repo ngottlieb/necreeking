@@ -11,5 +11,6 @@ Necreeking::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => "registrations" }
   resources :users
   
-  resources :reports, :only => ["index", "create", "new"]
+  resources :reports, :only => ["index", "new"]
+  match 'reports/twilio' => 'reports#twilio_create', :as => :twilio_sms_endpoint
 end
