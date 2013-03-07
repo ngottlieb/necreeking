@@ -1,4 +1,6 @@
-<h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
+<h3>River Reports</h3>
+<% @reports.each do |report| %>
+  <p>Time: <%= report.created_at %></p>
+  <p>Report: <%= report.report %></p>
+  <p>From: <%= report.source %></p>
 <% end %>

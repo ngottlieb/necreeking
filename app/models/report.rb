@@ -4,5 +4,9 @@ class Report < ActiveRecord::Base
   
   default_scope order("created_at DESC")
   
+  def source
+    self.email || self.phone
+  end
+  
   
 end
