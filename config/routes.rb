@@ -8,7 +8,7 @@ Necreeking::Application.routes.draw do
   
   match 'how-it-works' => 'home#how_it_works', :as => :how_it_works
   
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }
   resources :users
   
   resources :reports, :only => ["index", "create", "new"]
