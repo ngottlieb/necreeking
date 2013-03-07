@@ -17,8 +17,6 @@ class Report < ActiveRecord::Base
       user = User.find_by_email(self.email)
     elsif !self.phone.nil? && !self.phone.empty?
       user = User.find_by_phone(self.phone)
-    else
-      nil
     end
     if user
       self.user = user
