@@ -23,7 +23,18 @@ describe Report do
     end
           
   end
-        
+
+  describe "with banned source" do
+
+    before do
+      @banned_phone = FactoryGirl.create(:banned_phone_number)
+    end
+    
+    it "should not create a report" do
+      r = FactoryGirl.build(:report, phone: @banned_phone.phone)
+      r.should_not be_valid
+    end
+  end
 
 
 end

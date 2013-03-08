@@ -4,6 +4,8 @@ class Report < ActiveRecord::Base
   attr_accessible :email, :phone, :report, :user_id
   belongs_to :user
   
+  validate :source_not_banned
+  
   default_scope order("created_at DESC")
   
   def source
@@ -18,6 +20,12 @@ class Report < ActiveRecord::Base
     end
     if user
       self.user = user
+    end
+  end
+  
+  def source_not_banned
+    if BannedPhoneNumber.where(phone: self.phone).exists?
+      errors.add(:phone, "phone number banned")
     end
   end
       

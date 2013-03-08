@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130308135432) do
+ActiveRecord::Schema.define(:version => 20130308192052) do
+
+  create_table "banned_phone_numbers", :force => true do |t|
+    t.integer  "user_id"
+    t.boolean  "banned"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "phone"
+  end
 
   create_table "reports", :force => true do |t|
     t.string   "phone"
