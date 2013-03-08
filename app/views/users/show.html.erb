@@ -1,6 +1,9 @@
 <h3><%= @user.name %></h3>
+<% if @user.location %>
+  <p>Location: <%= @user.location %></p>
+<% end %>
 <% if @user.reports %>
-  <h3>Level Update History</h3>
+  <h3>Level Report History</h3>
   <% @user.reports.each do |report| %>
     <%= render :partial => "reports/shared/report", :locals => { :report => report } %>
   <% end %>
