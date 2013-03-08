@@ -4,7 +4,9 @@
 		<%= time_tag report.created_at %>
 	</span>
     <% if report.user %>
-    	<span class="label label-default">From: <%= report.user.name %></span>
+    	<span class="label label-default">
+			<%= link_to "From: #{report.user.name}", user_path(report.user) %>
+		</span>
     <% end %>
 	<p><%= report.report %></p>
 </div>
