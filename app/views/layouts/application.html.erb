@@ -26,10 +26,8 @@
               <%= yield %>
             </div>
 			<div class="span3">
-				<h3>Live River Updates</h3>
-				<% sidebar_reports.each do |report| %>
-				  <%= render :partial => "reports/shared/report", :locals => { :report => report } %>
-				<% end %>
+				<%= render 'layouts/donate_button' %>
+				<%= render 'reports/shared/sidebar_index' %>
 			</div>
           </div>
           <footer>
