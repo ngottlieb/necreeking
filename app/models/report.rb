@@ -1,4 +1,7 @@
 class Report < ActiveRecord::Base
+  
+  REPORTS_FOR_LEVELS_RESPONSE = 3
+  
   before_save :assign_to_user
   
   attr_accessible :email, :phone, :report, :user_id
@@ -28,8 +31,22 @@ class Report < ActiveRecord::Base
       errors.add(:phone, "phone number banned")
     end
   end
-      
-    
   
+  # TODO: refactor this formatting into a view somehow
+  def self.levels_sms_response
+    i = 0
+    response_text = ""
+    Report.limit(REPORTS_FOR_LEVELS_RESPONSE).each do |r| 
+      i += 1
+      if r.user
+        response_text += r.user.to_s + ": "
+      end
+      response_text += r.report + " -- " + r.created_at.to_s
+      if i < REPORTS_FOR_LEVELS_RESPONSE
+        response_text += " | "
+      end
+    end
+    return response_text
+  end
   
 end
