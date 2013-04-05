@@ -34,7 +34,17 @@ class TwilioController < ApplicationController
     end
               
     twiml = Twilio::TwiML::Response.new do |r|
-      r.Sms response_text
+      if response_text.length > 160
+        responses = response_text.split(153)
+        i = 1
+        responses.each do |resp|
+          resp += "(#{i}/#{responses.length})"
+          r.Sms resp
+          i += 1
+        end
+      else
+        r.Sms response_text
+      end
     end
     render :xml => twiml.text
     return
