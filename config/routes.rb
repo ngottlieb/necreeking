@@ -12,5 +12,7 @@ Necreeking::Application.routes.draw do
   resources :users
   
   resources :reports, :only => ["index", "new"]
-  match 'reports/twilio' => 'reports#twilio_create', :as => :twilio_sms_endpoint
+  
+  match 'twilio' => 'twilio#incoming_sms', :as => :incoming_sms
+  
 end
