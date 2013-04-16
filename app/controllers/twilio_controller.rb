@@ -17,7 +17,7 @@ class TwilioController < ApplicationController
     
     # parse the SMS :Body for commands and return the response as XML to Twilio
     if  AVAILABLE_COMMANDS.include? params[:Body].downcase
-      case params[:Body]
+      case params[:Body].downcase
       when HELP_COMMAND
         response_text = HELP_TEXT
       when LEVELS_COMMAND
