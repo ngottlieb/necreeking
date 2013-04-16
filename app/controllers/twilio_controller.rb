@@ -2,10 +2,10 @@ class TwilioController < ApplicationController
   
   include TwilioHelper
   
-  HELP_COMMAND = "help"
+  HELP_COMMAND = "info"
   LEVELS_COMMAND = "levels"
   AVAILABLE_COMMANDS = [HELP_COMMAND, LEVELS_COMMAND]
-  HELP_TEXT = "NECreeking Help Response"
+  HELP_TEXT = "Text in a level report or text in \'levels\' for the latest info"
 
   # parses incoming SMS messages from the Twilio numbers
   # if a command is given, returns an appropriate response
@@ -16,7 +16,7 @@ class TwilioController < ApplicationController
     end
     
     # parse the SMS :Body for commands and return the response as XML to Twilio
-    if  AVAILABLE_COMMANDS.include? params[:Body]
+    if  AVAILABLE_COMMANDS.include? params[:Body].downcase
       case params[:Body]
       when HELP_COMMAND
         response_text = HELP_TEXT
