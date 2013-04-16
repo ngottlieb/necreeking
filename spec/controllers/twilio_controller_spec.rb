@@ -1,4 +1,5 @@
 require 'spec_helper'
+include TwilioHelper
 
 describe TwilioController do
 
@@ -25,8 +26,8 @@ describe TwilioController do
         it "\'levels\' should return the defined # of most recent reports" do
           4.times do FactoryGirl.create(:report) end
           post 'incoming_sms', :Body => "levels"
-          twiml = Twilio::TwiML::Response.new do |r|
-            r.Sms Report.levels_sms_response
+          twiml = Twilio::TwiML::Response.new do |r| 
+            long_sms_split(r, Report.levels_sms_response)
           end
           response.body.should == twiml.text
         end

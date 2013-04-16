@@ -1,5 +1,7 @@
 class TwilioController < ApplicationController
   
+  include TwilioHelper
+  
   HELP_COMMAND = "help"
   LEVELS_COMMAND = "levels"
   AVAILABLE_COMMANDS = [HELP_COMMAND, LEVELS_COMMAND]
@@ -34,21 +36,12 @@ class TwilioController < ApplicationController
     end
               
     twiml = Twilio::TwiML::Response.new do |r|
-      if response_text.length > 160
-        responses = response_text.split(153)
-        i = 1
-        responses.each do |resp|
-          resp += "(#{i}/#{responses.length})"
-          r.Sms resp
-          i += 1
-        end
-      else
-        r.Sms response_text
-      end
+      long_sms_split(r, response_text)
     end
     render :xml => twiml.text
     return
     
   end
+  
   
 end

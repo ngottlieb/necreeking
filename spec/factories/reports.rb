@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :report do
     phone "(888) 888-8888"
     email ""
-    report "MyText"
+    report "This is a reasonable length report"
   end
 end
