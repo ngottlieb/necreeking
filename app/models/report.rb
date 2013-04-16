@@ -41,7 +41,7 @@ class Report < ActiveRecord::Base
       if r.user
         response_text += r.user.to_s + ": "
       end
-      response_text += r.report + " -- " + r.created_at.strftime("%m/%d/%y %H %M")
+      response_text += r.report + " -- " + r.created_at.strftime("%m/%d/%y - %I:%M%p")
       if i < REPORTS_FOR_LEVELS_RESPONSE
         response_text += " | "
       end
