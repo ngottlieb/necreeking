@@ -38,8 +38,8 @@ class Report < ActiveRecord::Base
     response_text = ""
     Report.limit(REPORTS_FOR_LEVELS_RESPONSE).each do |r| 
       i += 1
-      if r.user
-        response_text += r.user.to_s + ": "
+      if r.user && r.user.name
+        response_text += r.user.name + ": "
       end
       response_text += r.report + " -- " + r.created_at.strftime("%m/%d/%y - %I:%M%p")
       if i < REPORTS_FOR_LEVELS_RESPONSE
