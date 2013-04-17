@@ -36,14 +36,14 @@
       <div class="container">
         <div class="content">
            <div class="row">
-            <div class="span9">
+			      <div class="span3 pull-right">
+      				<%= render 'layouts/donate_button' %>
+      				<%= render 'reports/shared/sidebar_index' %>
+      			</div>
+      			<div class="span9">
               <%= render 'layouts/messages' %>
               <%= yield %>
             </div>
-			<div class="span3">
-				<%= render 'layouts/donate_button' %>
-				<%= render 'reports/shared/sidebar_index' %>
-			</div>
           </div>
           <footer>
           </footer>
