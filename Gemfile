@@ -22,3 +22,4 @@ gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri
 gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
 gem "tilt", "= 1.3.3"
 gem "twilio-ruby"
+gem "twitter"

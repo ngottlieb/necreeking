@@ -11,6 +11,16 @@ class Report < ActiveRecord::Base
   
   default_scope order("created_at DESC")
   
+  def after_create
+    Twitter.configure do |config|
+      config.consumer_key = "Dxsba4cHgW2FBuoNQ02aw"
+      config.consumer_secret = "24R8v1roKe9jCmBUJWhnFNY8FqVLRUvEwpkAOXVPA"
+      config.oauth_token = "173942897-7v6sIl4Gu6oar0MFl9ouTu6zE0jBxqZ43aOQmeaF"
+      config.oauth_token_secret = "2nuPzyBFMKjkY51NVTnY1R2vCXebX9404YOlUc3Op8"
+    end
+    Twitter.update(report)
+  end
+  
   def source
     self.email || self.phone
   end
