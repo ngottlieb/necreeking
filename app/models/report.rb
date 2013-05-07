@@ -9,9 +9,11 @@ class Report < ActiveRecord::Base
   
   validate :source_not_banned
   
+  after_create :post_to_twitter
+  
   default_scope order("created_at DESC")
   
-  def after_create
+  def post_to_twitter
     Twitter.configure do |config|
       config.consumer_key = "Dxsba4cHgW2FBuoNQ02aw"
       config.consumer_secret = "24R8v1roKe9jCmBUJWhnFNY8FqVLRUvEwpkAOXVPA"
