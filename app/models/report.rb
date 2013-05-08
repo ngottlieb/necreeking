@@ -1,6 +1,6 @@
 class Report < ActiveRecord::Base
   
-  paginates_per = 1
+  paginates_per 10
   
   REPORTS_FOR_LEVELS_RESPONSE = 3
   
