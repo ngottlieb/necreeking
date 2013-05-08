@@ -1,7 +1,7 @@
 Necreeking::Application.routes.draw do
 
   authenticated :user do
-    root :to => 'home#how_it_works'
+    root :to => 'reports#index'
   end
   
   root :to => "home#how_it_works"

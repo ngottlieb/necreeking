@@ -49,7 +49,7 @@
 			      <div class="span3 pull-right">
       				<%= render 'layouts/donate_button' %>
       				<%= render 'layouts/fb_like' %>
-      				<%= render 'reports/shared/sidebar_index' %>
+      				<%= render 'reports/shared/sidebar_index' unless params[:controller] == "reports" && params[:action] == "index" %>
       			</div>
       			<div class="span9">
               <%= render 'layouts/messages' %>

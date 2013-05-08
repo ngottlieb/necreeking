@@ -1,5 +1,7 @@
 class Report < ActiveRecord::Base
   
+  paginates_per = 1
+  
   REPORTS_FOR_LEVELS_RESPONSE = 3
   
   before_save :assign_to_user

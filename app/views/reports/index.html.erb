@@ -1,6 +1,5 @@
-<h3>River Reports</h3>
+<h3>Live River Updates</h3>
+<%= paginate @reports %>
 <% @reports.each do |report| %>
-  <p>Time: <%= report.created_at %></p>
-  <p>Report: <%= report.report %></p>
-  <p>From: <%= report.source %></p>
+  <%= render :partial => "reports/shared/report", :locals => { :report => report } %>
 <% end %>
