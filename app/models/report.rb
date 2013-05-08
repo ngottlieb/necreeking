@@ -15,10 +15,10 @@ class Report < ActiveRecord::Base
   
   def post_to_twitter
     Twitter.configure do |config|
-      config.consumer_key = "Dxsba4cHgW2FBuoNQ02aw"
-      config.consumer_secret = "24R8v1roKe9jCmBUJWhnFNY8FqVLRUvEwpkAOXVPA"
-      config.oauth_token = "173942897-IaQsMsz2NByKMOyVRw0C5y2UYRolmXQCHihZ9wIp"
-      config.oauth_token_secret = "FJg1Pd6ywSUEN8Irx0DF5SroKAJHyA6FXfzZzCPA8"
+      config.consumer_key = Figaro.env.twitter_consumer_key
+      config.consumer_secret = Figaro.env.twitter_consumer_secret
+      config.oauth_token = Figaro.env.twitter_oauth_token
+      config.oauth_token_secret = Figaro.env.twitter_oauth_secret
     end
     Twitter.update(self.report)
   end

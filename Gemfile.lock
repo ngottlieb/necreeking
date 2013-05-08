@@ -90,6 +90,9 @@ GEM
     json (1.7.7)
     jwt (0.1.6)
       multi_json (>= 1.0)
+    kaminari (0.14.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     launchy (2.2.0)
       addressable (~> 2.3)
     mail (2.4.4)
@@ -200,6 +203,7 @@ DEPENDENCIES
   figaro (>= 0.5.3)
   hub (>= 1.10.2)
   jquery-rails
+  kaminari
   mysql2 (>= 0.3.11)
   quiet_assets (>= 1.0.1)
   rails (= 3.2.12)
