@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def sidebar_reports
-    Report.limit(6)
+    Report.limit(3)
   end
 
 end
