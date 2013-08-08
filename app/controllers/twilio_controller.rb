@@ -26,7 +26,7 @@ class TwilioController < ApplicationController
       when HELP_COMMAND
         response_text = HELP_TEXT
       when LEVELS_COMMAND
-        response_text = Report.levels_sms_response
+        response_text = Report.levels_sms_response(region)
       else 
         response_text = "Unknown command"
       end

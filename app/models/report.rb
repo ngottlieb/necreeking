@@ -50,10 +50,15 @@ class Report < ActiveRecord::Base
   end
   
   # TODO: refactor this formatting into a view somehow
-  def self.levels_sms_response
+  def self.levels_sms_response(region=nil)
     i = 0
     response_text = ""
-    Report.limit(REPORTS_FOR_LEVELS_RESPONSE).each do |r| 
+    unless region.nil?
+      reports = Report.where(region_id: region.id)
+    else
+      reports = Report
+    end
+    reports.limit(REPORTS_FOR_LEVELS_RESPONSE).each do |r| 
       i += 1
       if r.user && r.user.name
         response_text += r.user.name + ": "
