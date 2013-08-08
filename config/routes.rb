@@ -1,5 +1,9 @@
 Necreeking::Application.routes.draw do
 
+  get "regions/index"
+
+  get "regions/show"
+
   root :to => "home#how_it_works"
   
   match 'how-it-works' => 'home#how_it_works', :as => :how_it_works

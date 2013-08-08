@@ -1,12 +1,17 @@
 <div class="report well">
 	<button type="button" class="close" data-dismiss="alert">&times;</button>
+  <% if report.region %>
+    <span class="label label-important">
+      <%= report.region.name %>
+    </span>
+  <% end %>
 	<span class="label label-info">
 		<%= time_tag report.created_at %>
 	</span>
     <% if report.user %>
     	<span class="label label-default">
-			<%= link_to "From: #{report.user.name}", user_path(report.user) %>
-		</span>
+			  <%= link_to "From: #{report.user.name}", user_path(report.user) %>
+		  </span>
     <% end %>
 	<p><%= report.report %></p>
 </div>

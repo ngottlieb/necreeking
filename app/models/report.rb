@@ -8,6 +8,7 @@ class Report < ActiveRecord::Base
   
   attr_accessible :email, :phone, :report, :user_id
   belongs_to :user
+  belongs_to :region
   
   validate :source_not_banned
   

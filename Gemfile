@@ -25,3 +25,4 @@ gem "twilio-ruby"
 gem "twitter"
 gem "kaminari"
 gem "heroku"
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'

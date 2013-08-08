@@ -13,7 +13,12 @@ module ApplicationHelper
   end
 
   def sidebar_reports
-    Report.limit(3)
+    if current_user and current_user.regions.count > 0
+      regions = current_user.regions.map { |r| r.id }
+      Report.where(region_id: regions).limit(3)
+    else
+      Report.limit(3)
+    end
   end
 
 end

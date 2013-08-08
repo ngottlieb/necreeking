@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :phone, :location
   has_many :reports
+  has_and_belongs_to_many :regions
   
   validates_uniqueness_of :email, :phone
   

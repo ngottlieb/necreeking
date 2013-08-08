@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130308192052) do
+ActiveRecord::Schema.define(:version => 20130808144037) do
 
   create_table "banned_phone_numbers", :force => true do |t|
     t.integer  "user_id"
@@ -21,6 +21,18 @@ ActiveRecord::Schema.define(:version => 20130308192052) do
     t.string   "phone"
   end
 
+  create_table "regions", :force => true do |t|
+    t.string   "name"
+    t.string   "phone_number"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "regions_users", :force => true do |t|
+    t.integer "region_id"
+    t.integer "user_id"
+  end
+
   create_table "reports", :force => true do |t|
     t.string   "phone"
     t.string   "email"
@@ -28,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20130308192052) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "region_id"
   end
 
   create_table "users", :force => true do |t|
