@@ -4,8 +4,8 @@
   <%= display_base_errors resource %>
   <%= f.input :name, :autofocus => true %>
   <%= f.input :email, :required => true %>
-  <%= f.input :phone, :required => false %>
-  <%= f.input :location, :required => false, :hint => "City, State or \"Northern VT\" -- whatever you want to disclose" %>
+  <%= f.input :phone, :required => false, :type => "tel", hint: "Your phone number is not displayed anywhere, it's just used to match incoming reports to your user account." %>
+  <%= f.association :regions, as: :check_boxes, hint: "Select the regions you want to see messages from" %>
   <%= f.input :password, :required => true %>
   <%= f.input :password_confirmation, :required => true %>
   <%= f.button :submit, 'Sign up', :class => 'btn-primary' %>

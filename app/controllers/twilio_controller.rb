@@ -15,6 +15,11 @@ class TwilioController < ApplicationController
       phone = "(" + params[:From][2..4] + ")" + " " + params[:From][5..7] + "-" + params[:From][8..11]
     end
     
+    if params[:To]
+      twilio_number = "(" + params[:To][2..4] + ")" + " " + params[:To][5..7] + "-" + params[:To][8..11]
+      region = Region.find_by_phone_number(twilio_number)
+    end
+    
     # parse the SMS :Body for commands and return the response as XML to Twilio
     if  AVAILABLE_COMMANDS.include? params[:Body].downcase
       case params[:Body].downcase
@@ -27,7 +32,7 @@ class TwilioController < ApplicationController
       end
     # if no command found, attempt to create a new report
     else 
-      @report = Report.new(:report => params[:Body], :phone => phone)
+      @report = Report.new(:report => params[:Body], :phone => phone, :region => region)
       if @report.save
         response_text = nil
       else

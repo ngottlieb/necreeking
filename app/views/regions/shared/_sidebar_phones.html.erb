@@ -1,0 +1,13 @@
+<div class="well">
+  <h4>Regional Phone Numbers</h4>
+  <% Region.all.each do |r| %>
+    <div class="regional-phone-number">
+      <span class="label label-warning">
+        <%= r.name %>:
+      </span>
+      <span class="label label-primary">
+        <%= r.phone_number %>
+      </span>
+    </div>
+  <% end %>
+</div>

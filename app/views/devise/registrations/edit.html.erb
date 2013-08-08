@@ -4,12 +4,13 @@
   <%= display_base_errors resource %>
   <%= f.input :name, :autofocus => true %>
   <%= f.input :email, :required => true %>
-  <%= f.input :phone, :required => false, :type => "tel" %>
-  <%= f.input :location, :required => false, :hint => "City, State or \"Northern VT\" -- whatever you want to disclose" %>
-  <%= f.input :current_password, :hint => "only required if you are changing your password or email address" %>
+  <%= f.input :phone, :required => false, :type => "tel", hint: "Your phone number is not displayed anywhere, it's just used to match incoming reports to your user account." %>
+  <%= f.association :regions, as: :check_boxes, hint: "Select the regions you want to see messages from" %>
+  <%= f.input :current_password, :hint => "required if you are changing your password or email address" %>
   <%= f.input :password, :label => "New password", :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
   <%= f.input :password_confirmation, :label => "New password confirmation", :required => false %>
   <%= f.button :submit, 'Update', :class => 'btn-primary' %>
+  <span class='btn btn-danger' id="change-pw">Change Password</span>
 <% end %>
 <h3>Cancel my account</h3>
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>

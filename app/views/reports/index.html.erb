@@ -1,5 +1,39 @@
 <h3>Live River Updates</h3>
-<%= paginate @reports %>
-<% @reports.each do |report| %>
-  <%= render :partial => "reports/shared/report", :locals => { :report => report } %>
-<% end %>
+<table class="table table-striped datatable">
+  <thead>
+    <tr>
+      <th>Timestamp</th>
+      <th>Beta</th>
+      <th>Region</th>
+      <th>User</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr>
+        <td>
+         	<span class="label label-info">
+		        <%= time_tag report.created_at %>
+	        </span>
+        </td>
+        <td>
+          <%= report.report%>
+		    </td>
+        <td>
+          <% if report.region %>
+            <span class="label label-important">
+              <%= report.region.name %>
+            </span>
+          <% end %>
+        </td>
+        <td>
+          <% if report.user %>
+            <span class="label label-default">
+  			      <%= link_to "From: #{report.user.name}", user_path(report.user) %>
+  		      </span>
+  		    <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

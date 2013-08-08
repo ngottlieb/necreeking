@@ -7,6 +7,7 @@ Necreeking::Application.routes.draw do
   root :to => "home#how_it_works"
   
   match 'how-it-works' => 'home#how_it_works', :as => :how_it_works
+  match 'about' => 'home#about', as: :about
   
   devise_for :users, :controllers => { :registrations => "registrations" }
   resources :users

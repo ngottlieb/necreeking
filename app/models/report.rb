@@ -6,7 +6,7 @@ class Report < ActiveRecord::Base
   
   before_save :assign_to_user
   
-  attr_accessible :email, :phone, :report, :user_id
+  attr_accessible :email, :phone, :report, :user_id, :region
   belongs_to :user
   belongs_to :region
   
@@ -23,7 +23,9 @@ class Report < ActiveRecord::Base
       config.oauth_token = Figaro.env.twitter_oauth_token
       config.oauth_token_secret = Figaro.env.twitter_oauth_secret
     end
-    Twitter.update(self.report)
+    unless ENV['RAILS_ENV'] == "test"
+      Twitter.update(self.report)
+    end
   end
   
   def source
