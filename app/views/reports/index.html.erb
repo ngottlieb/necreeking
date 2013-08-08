@@ -1,4 +1,10 @@
 <h3>Live River Updates</h3>
+<div id="region-filter">
+  <input type="hidden" id="region-filter" />
+  <% Region.all.each do |r| %>
+    <button class="btn region-btn"><%= r.name %></button>
+  <% end %>
+</div>
 <table class="table table-striped datatable">
   <thead>
     <tr>
