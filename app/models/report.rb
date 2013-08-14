@@ -24,7 +24,7 @@ class Report < ActiveRecord::Base
       config.oauth_token_secret = Figaro.env.twitter_oauth_secret
     end
     unless ENV['RAILS_ENV'] == "test"
-      Twitter.update(self.report)
+      Twitter.update("##{self.region.name} #{self.report}")
     end
   end
   
